@@ -1,4 +1,11 @@
 server:
-  port: 8091
-configuration:
-  texto: Configurando entorno Desarollo
+  port: 8093
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8091/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"      
