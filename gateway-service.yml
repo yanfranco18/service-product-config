@@ -45,7 +45,7 @@ spring:
         predicates:
           - Path=/products/**
         filters:
-          - name: Circuitbreaker
+          - name: CircuitBreaker
             args:
               name: products
               statusCodes: 500
