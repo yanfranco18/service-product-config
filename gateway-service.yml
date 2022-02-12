@@ -11,7 +11,12 @@ spring:
       - id: service-product
         uri: lb://service-product
         predicates:
-        - Path=/products/**
+          - Path=/products/**
+        filters:
+          - name: Circuitbreaker
+            args:
+              name: products
+              statusCodes: 500
 eureka:
   client:
     service-url:
