@@ -40,15 +40,24 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: service-product
-        uri: lb://service-product
-        predicates:
-          - Path=/products/**
-        filters:
-          - name: CircuitBreaker
-            args:
-              name: products
-              statusCodes: 500
+        - id: service-product
+          uri: lb://service-product
+          predicates:
+            - Path=/products/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: products
+                statusCodes: 500
+        - id: client-service
+          uri: lb://client-service
+          predicates:
+            - Path=/clients/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: clients
+                statusCodes: 500
 eureka:
   client:
     service-url:
