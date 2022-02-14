@@ -58,6 +58,15 @@ spring:
               args:
                 name: clients
                 statusCodes: 500
+        - id: account-service
+          uri: lb://account-service
+          predicates:
+            - Path=/accounts/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: accounts
+                statusCodes: 500                
 eureka:
   client:
     service-url:
