@@ -58,6 +58,15 @@ spring:
               args:
                 name: clients
                 statusCodes: 500
+        - id: payments-service
+          uri: lb://payments-service
+          predicates:
+            - Path=/payments/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: payments
+                statusCodes: 500            
         - id: account-service
           uri: lb://account-service
           predicates:
