@@ -75,7 +75,16 @@ spring:
             - name: CircuitBreaker
               args:
                 name: payments
-                statusCodes: 500                 
+                statusCodes: 500
+        - id: debit-service
+          uri: lb://debit-service
+          predicates:
+            - Path=/debits/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: debits
+                statusCodes: 500 
 eureka:
   client:
     service-url:
