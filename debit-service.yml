@@ -1,0 +1,12 @@
+server:
+  port: 8097
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8091/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
