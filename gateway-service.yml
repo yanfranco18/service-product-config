@@ -84,6 +84,15 @@ spring:
             - name: CircuitBreaker
               args:
                 name: debits
+                statusCodes: 500
+        - id: yanki-service
+          uri: lb://yanki-service
+          predicates:
+            - Path=/yankis/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: yakis
                 statusCodes: 500 
 eureka:
   client:
